@@ -12,8 +12,15 @@ const organizationSchema = new mongoose.Schema({
   },
   members: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+      member: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+      role: {
+        type: String,
+        default: "COLLABORATOR",
+        ENUM: ["COLLABORATOR", "OWNER", "ADMIN", "MEMBER", "GUEST"],
+      },
     },
   ],
   notebooks: [

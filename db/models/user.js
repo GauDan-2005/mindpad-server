@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  is_google_auth: {
-    type: Boolean,
-    required: true,
-  },
   username: {
     type: String,
     required: true,
@@ -48,7 +44,8 @@ const userSchema = new mongoose.Schema({
       },
       role: {
         type: String,
-        default: "collaborator",
+        default: "COLLABORATOR",
+        ENUM: ["COLLABORATOR", "OWNER", "ADMIN", "MEMBER", "GUEST"],
       },
     },
   ],
